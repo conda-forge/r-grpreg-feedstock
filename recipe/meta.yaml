@@ -1,4 +1,4 @@
-{% set version = '3.0-2' %}
+{% set version = "3.1-4" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/grpreg_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/grpreg/grpreg_{{ version }}.tar.gz
-  sha256: 12111d8ecb45974070a22ac6998155cc67935b49d88b358f5eaaa0f2833dd8f0
+  sha256: 2946124fcb5e6d1ca3ed021757801be2d9e8ab79755726a64d6f3c5de340b953
 
 build:
   number: 0
