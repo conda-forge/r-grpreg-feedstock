@@ -1,4 +1,4 @@
-{% set version = "3.1-4" %}
+{% set version = "3.2-0" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,11 +12,11 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/grpreg_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/grpreg/grpreg_{{ version }}.tar.gz
-  sha256: 2946124fcb5e6d1ca3ed021757801be2d9e8ab79755726a64d6f3c5de340b953
+  sha256: 15ad18d851305c85ad9015fb93f132c10d2e0fb26886afdcf942e053616d734b
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
