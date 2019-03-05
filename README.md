@@ -5,13 +5,13 @@
 About r-grpreg
 ==============
 
-Home: https://CRAN.R-project.org/package=grpreg
+Home: http://pbreheny.github.io/grpreg, https://github.com/pbreheny/grpreg
 
 Package license: GPL-3
 
 Feedstock license: BSD 3-Clause
 
-Summary: Efficient algorithms for fitting the regularization path of linear or logistic regression models with grouped penalties.  This includes group selection methods such as group lasso, group MCP, and group SCAD as well as bi-level selection methods such as the group exponential lasso, the composite MCP, and the group bridge.
+Summary: Efficient algorithms for fitting the regularization path of linear regression, GLM, and Cox regression models with grouped penalties.  This includes group selection methods such as group lasso, group MCP, and group SCAD as well as bi-level selection methods such as the group exponential lasso, the composite MCP, and the group bridge.
 
 
 
@@ -114,6 +114,5 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@bgruening](https://github.com/bgruening/)
-* [@johanneskoester](https://github.com/johanneskoester/)
+* [@conda-forge/r](https://github.com/conda-forge/r/)
 
