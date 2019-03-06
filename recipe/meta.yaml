@@ -1,5 +1,4 @@
-{% set version = "3.2-0" %}
-
+{% set version = '3.2-1' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,48 +7,72 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: grpreg_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/grpreg_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/grpreg/grpreg_{{ version }}.tar.gz
-  sha256: 15ad18d851305c85ad9015fb93f132c10d2e0fb26886afdcf942e053616d734b
+    - {{ cran_mirror }}/src/contrib/grpreg_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/grpreg/grpreg_{{ version }}.tar.gz
+  sha256: 6be37719a74d59582107273385d70963b4ccc6c394948c7617e65246d713cb88
 
 build:
   merge_build_host: True  # [win]
   number: 0
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-matrix
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-matrix
 
 test:
   commands:
-    - $R -e "library('grpreg')"  # [not win]
+    - $R -e "library('grpreg')"           # [not win]
     - "\"%R%\" -e \"library('grpreg')\""  # [win]
 
 about:
-  home: https://CRAN.R-project.org/package=grpreg
+  home: http://pbreheny.github.io/grpreg, https://github.com/pbreheny/grpreg
   license: GPL-3
-  summary: Efficient algorithms for fitting the regularization path of linear or logistic regression
-    models with grouped penalties.  This includes group selection methods such as group
-    lasso, group MCP, and group SCAD as well as bi-level selection methods such as the
-    group exponential lasso, the composite MCP, and the group bridge.
+  summary: Efficient algorithms for fitting the regularization path of linear regression, GLM,
+    and Cox regression models with grouped penalties.  This includes group selection
+    methods such as group lasso, group MCP, and group SCAD as well as bi-level selection
+    methods such as the group exponential lasso, the composite MCP, and the group bridge.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
+    - conda-forge/r
+
+# Package: grpreg
+# Title: Regularization Paths for Regression Models with Grouped Covariates
+# Version: 3.2-1
+# Date: 2019-02-26
+# Authors@R: c( person("Patrick", "Breheny", role=c("aut","cre"), email="patrick-breheny@uiowa.edu", comment=c(ORCID="000-0002-0650-1119")), person("Yaohui", "Zeng", role="ctb"))
+# Depends: R (>= 3.1.0)
+# Imports: Matrix
+# Suggests: grpregOverlap, knitr, survival
+# VignetteBuilder: knitr
+# Description: Efficient algorithms for fitting the regularization path of linear regression, GLM, and Cox regression models with grouped penalties.  This includes group selection methods such as group lasso, group MCP, and group SCAD as well as bi-level selection methods such as the group exponential lasso, the composite MCP, and the group bridge.
+# BugReports: http://github.com/pbreheny/grpreg/issues
+# License: GPL-3
+# URL: http://pbreheny.github.io/grpreg, https://github.com/pbreheny/grpreg
+# LazyData: TRUE
+# RoxygenNote: 6.1.1
+# NeedsCompilation: yes
+# Packaged: 2019-02-26 21:05:37 UTC; pbreheny
+# Author: Patrick Breheny [aut, cre] (<https://orcid.org/000-0002-0650-1119>), Yaohui Zeng [ctb]
+# Maintainer: Patrick Breheny <patrick-breheny@uiowa.edu>
+# Repository: CRAN
+# Date/Publication: 2019-02-26 21:40:03 UTC
