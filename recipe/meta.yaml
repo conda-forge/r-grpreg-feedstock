@@ -1,4 +1,4 @@
-{% set version = "3.2.2" %}
+{% set version = "3.3.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/grpreg_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/grpreg/grpreg_{{ version }}.tar.gz
-  sha256: e59f576ee5d794444917e0fbdab0d1ebf4aa71967c9a35ec196899ed5b168388
+  sha256: d7c93c62659bd0f0d944cc1470f13443ffdebfeac5ef21ffb604ff6acbeb455b
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -44,12 +44,10 @@ test:
 about:
   home: http://pbreheny.github.io/grpreg, https://github.com/pbreheny/grpreg
   license: GPL-3
-  summary: Efficient algorithms for fitting the regularization path of linear regression, GLM,
-    and Cox regression models with grouped penalties.  This includes group selection
-    methods such as group lasso, group MCP, and group SCAD as well as bi-level selection
-    methods such as the group exponential lasso, the composite MCP, and the group bridge.
+  summary: Efficient algorithms for fitting the regularization path of linear regression, GLM, and Cox regression models with grouped penalties.  This includes group selection methods such as group lasso, group MCP, and group SCAD as well as bi-level selection methods such as the group exponential lasso, the composite MCP,
+    and the group bridge.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
