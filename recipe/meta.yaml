@@ -1,4 +1,4 @@
-{% set version = "3.3.0" %}
+{% set version = "3.3.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/grpreg_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/grpreg/grpreg_{{ version }}.tar.gz
-  sha256: d7c93c62659bd0f0d944cc1470f13443ffdebfeac5ef21ffb604ff6acbeb455b
+  sha256: f07e202d9da45fe7cb82dd1c6a760c04cc83b4e32aeae2bb40b979fab95305a5
 
 build:
   merge_build_host: true  # [win]
