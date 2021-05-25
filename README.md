@@ -3,7 +3,7 @@ About r-grpreg
 
 Home: http://pbreheny.github.io/grpreg, https://github.com/pbreheny/grpreg
 
-Package license: GPL-3
+Package license: GPL-3.0-only
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-grpreg-feedstock/blob/master/LICENSE.txt)
 
